@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kozy Knights</title>
+        <link rel="icon" href="chess-39312.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+        </style> 
+    </head>
+    <body>
+        <div class="hero">
+            <nav>
+                <img src="chess-39312.png" class="logo">
+                <a href="mailto:williams@kozyknights.com" class="btn btn--contact">Get in Touch</a>
+            </nav>
+
+            <div class="content">
+                <h1>Indulge in Endless <span>Kozy Knights</span></h1>
+                <form name="submit-to-google-sheet">
+                    <input type="email" name="Email" placeholder="Email Address" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+            <script>
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbw8sCla0DxqyHjvuBhU5qm9teciq_HUwCmy0Gw-nxg0UPoZ4hCcp3VpKn12pM_Rcwyg/exec'
+                const form = document.forms['submit-to-google-sheet']
+                const msg = document.getElementById("msg")
+              
+                form.addEventListener('submit', e => {
+                  e.preventDefault()
+                  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                        msg.innerHTML = "You're all set! Thank you for subscribing!"
+                        setTimeout(function(){
+                            msg.innerHTML = ""
+                        },30000)
+                        form.reset()
+                    })
+                    .catch(error => console.error('Error!', error.message))
+                })
+              </script>
+          <section class="about">
+            <h1>Who We Are</h1>
+            <br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <hr>
+            <br>
+            <br>
+            <div class="image-row">
+                    <a href="products.html" target="_blank">
+                        <div class="about-col">
+                        <img src="IMG_products.jpg" height="500"/>
+                     <div class="layer">
+                        <h3>Our Product</h3>
+                    </div>
+                </div>
+                </a>
+                    <a href="family.html" target="_blank">
+                        <div class="about-col">
+                    <img src="IMG_family.jpg" height="500"/>
+                    <div class="layer">
+                        <h3>Our Family</h3>
+                    </div>
+                </div>
+                    </a>
+            </div>
+          </section>
+          <hr>
+        <footer>
+            <p>
+        &lt;&lt;&lt; &copy; <a href="about.html">Shelby Williams</a> &gt;&gt;&gt;</p>
+        <p>
+            <a href="#">Back to Top</a>
+        </p>
+    </footer>
+    </body>
+</html>
